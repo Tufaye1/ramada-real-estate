@@ -1,13 +1,15 @@
 import type { NextConfig } from "next";
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const isCloudflareDeploy = process.env.CLOUDFLARE_DEPLOY === "true";
+const isStaticExport = isGitHubPages || isCloudflareDeploy;
 const pagesBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
-  output: isGitHubPages ? "export" : undefined,
+  output: isStaticExport ? "export" : undefined,
   basePath: isGitHubPages && pagesBasePath ? pagesBasePath : undefined,
   assetPrefix: isGitHubPages && pagesBasePath ? pagesBasePath : undefined,
-  trailingSlash: isGitHubPages,
+  trailingSlash: isStaticExport,
   images: {
     unoptimized: true,
   },
