@@ -16,5 +16,5 @@
 
 ## Current focus
 
-Ramada rebrand and copy replacement complete and browser-verified. The existing design, media, motion, and interactions remain unchanged. Publication is pending.
+Complete. Ramada rebrand and copy replacement are browser-verified and published at https://onearc-residence.hasann12.chatgpt.site. The existing design, media, motion, and interactions remain unchanged.
 

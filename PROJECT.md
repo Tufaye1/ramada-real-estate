@@ -2,13 +2,13 @@
 
 ## Objective
 
-Build and privately publish a single-page luxury real-estate website for **OneArc Residence**. The page should feel editorial, spacious, image-led, and fluid rather than like a generic template.
+Maintain and privately publish a single-page real-estate website for **Ramada Builders Ltd.** The page should preserve its editorial, spacious, image-led design while presenting Ramada's landowner, buyer, and investor copy.
 
 ## Technical baseline
 
 - Sites portable Vinext starter with App Router semantics
 - TypeScript and Tailwind CSS
-- GSAP + ScrollTrigger for reveals, parallax, counters, pinned media, and stacking cards
+- GSAP + ScrollTrigger for reveals, parallax, counters, and stacking cards
 - Lenis for smooth scrolling
 - No UI component library in the page implementation
 
@@ -23,14 +23,14 @@ Build and privately publish a single-page luxury real-estate website for **OneAr
 
 ## Content flow
 
-Header → Hero → Why choose this property → Pill marquee → Stacking room cards → Property overview → Neighbourhood → Floor planning → Contact → Fun facts → Reviews → Dark CTA/footer.
+Header → Landowner hero → Why Ramada → Pill marquee → Stacking service cards → Ramada Dream House → Bashundhara location → Service planning → Contact → Company facts → Testimonials → Dark CTA/footer.
 
 ## Acceptance criteria
 
 - All supplied sections and core copy are present.
 - Layout is responsive from 1440px through 375px.
 - Header, mobile menu, feature switcher, floor-plan tabs, carousel, form controls, and CTA links are keyboard accessible.
-- Motion includes text reveals, image reveals, hero parallax, pinned overview, stacking rooms, pill movement, counters, and dark-section transition.
+- Motion includes text reveals, image reveals, hero parallax, stacking service cards, pill movement, counters, and dark-section transition.
 - `prefers-reduced-motion` disables smooth scrolling, pins, and scrubbed motion.
 - Initial content is readable before client animation initializes.
 - Production build passes and the private Sites deployment reaches a successful terminal state.
@@ -39,5 +39,5 @@ Header → Hero → Why choose this property → Pill marquee → Stacking room 
 
 - The contact form is presentation-only; no lead-storage backend was requested.
 - The current Sites-supported Vinext/Next runtime is retained instead of forcing an older Next 14 package.
-- Map and floor plans are code-native illustrations; property photography is generated for a cohesive art direction.
+- All photography, plan imagery, and video come from the user-supplied local asset library.
 

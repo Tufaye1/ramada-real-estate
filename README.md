@@ -1,6 +1,6 @@
-# OneArc Residence
+# Ramada Builders Ltd.
 
-Private luxury real-estate landing page built with the Sites Vinext starter, TypeScript, Tailwind CSS, GSAP, and Lenis.
+Private Ramada Builders real-estate landing page built with the Sites Vinext starter, TypeScript, Tailwind CSS, GSAP, and Lenis.
 
 ## Commands
 
