@@ -15,6 +15,7 @@
 - [x] Confirm successful deployment and record the final URL.
 - [x] Add a GitHub Pages build and deployment workflow.
 - [x] Configure the Cloudflare CNAME for the client-review subdomain.
+- [x] Rebalance ultrawide desktop containers, the feature panel, and marquee tracks.
 
 ## Current focus
 

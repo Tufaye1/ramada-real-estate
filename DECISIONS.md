@@ -15,4 +15,5 @@
 - Use the rewritten Ramada sales copy supplied by the user, map Ramada Dream House to the existing project overview, and omit all bracketed or unsupported project figures.
 - Replace unsupported OneArc statistics and testimonials with only the company facts, service count, founder experience, project name, address, and testimonials present in the supplied Ramada document.
 - Keep the private Sites deployment and add a separate static-export GitHub Pages workflow for client review at `ramada.tufayelhossain.com`.
+- Let desktop content expand to a 1600px frame on ultrawide screens; keep the rotating feature panel centered at 1120px and let marquee tracks overflow both viewport edges evenly.
 

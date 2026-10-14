@@ -254,13 +254,13 @@ export function RamadaSite() {
             .to(".hero-media img", { scale: 1.12, yPercent: -7 }, 0)
             .fromTo(".hero-stats", { y: 70 }, { y: 0 }, 0);
 
-          gsap.to(".marquee-row--one", {
-            xPercent: -18,
+          gsap.fromTo(".marquee-row--one", { xPercent: -48 }, {
+            xPercent: -56,
             ease: "none",
             scrollTrigger: { trigger: ".marquee", start: "top bottom", end: "bottom top", scrub: 1 },
           });
-          gsap.fromTo(".marquee-row--two", { xPercent: -18 }, {
-            xPercent: 2,
+          gsap.fromTo(".marquee-row--two", { xPercent: -56 }, {
+            xPercent: -48,
             ease: "none",
             scrollTrigger: { trigger: ".marquee", start: "top bottom", end: "bottom top", scrub: 1 },
           });
@@ -474,7 +474,9 @@ export function RamadaSite() {
         <section className="marquee" aria-label="Property qualities">
           {["one", "two"].map(function (row) {
             return <div className={"marquee-row marquee-row--" + row} key={row}>
-              {["Fixed Terms", "Transparent Costing", "Halal Structure", "Fixed Terms", "Transparent Costing", "Halal Structure"].map(function (label, index) {
+              {Array.from({ length: 18 }, function (_, index) {
+                return ["Fixed Terms", "Transparent Costing", "Halal Structure"][index % 3];
+              }).map(function (label, index) {
                 return <span key={label + String(index)}>{label}<ArrowDownRight size={22} /></span>;
               })}
             </div>;
