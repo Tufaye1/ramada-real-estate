@@ -11,10 +11,10 @@
 - [x] Implement the motion system and reduced-motion fallback.
 - [x] Run type/build checks and repair failures.
 - [x] Verify the page in a browser at desktop and mobile widths.
-- [ ] Package, push, and publish the private Site.
-- [ ] Confirm successful deployment and record the final URL.
+- [x] Package, push, and publish the private Site.
+- [x] Confirm successful deployment and record the final URL.
 
 ## Current focus
 
-Final packaging and private deployment.
+Complete. Private deployment: https://onearc-residence.hasann12.chatgpt.site
 
