@@ -7,4 +7,5 @@
 - Build the neighbourhood map and floor-plan graphics as semantic HTML/SVG so labels remain crisp and responsive.
 - Keep the contact form client-side because persistence, email delivery, and CRM integration are outside the brief.
 - Treat user-supplied testimonials and statistics as showcase copy from the supplied concept brief, not externally verified claims.
+- After browser review, reduce the property-quality marquee scale and remove the pinned overview scroll effect so the video remains static in a compact section.
 

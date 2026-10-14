@@ -262,16 +262,6 @@ export function OneArcSite() {
             scrollTrigger: { trigger: ".marquee", start: "top bottom", end: "bottom top", scrub: 1 },
           });
 
-          if (window.innerWidth > 900) {
-            ScrollTrigger.create({
-              trigger: ".overview-stage",
-              start: "top top+=90",
-              end: "+=980",
-              pin: ".overview-device",
-              scrub: 1,
-            });
-          }
-
           gsap.to(".dark-shell", {
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
@@ -482,7 +472,7 @@ export function OneArcSite() {
           {["one", "two"].map(function (row) {
             return <div className={"marquee-row marquee-row--" + row} key={row}>
               {["Cutting-Edge Architecture", "Next-Gen Living", "Quality Living", "Cutting-Edge Architecture", "Next-Gen Living", "Quality Living"].map(function (label, index) {
-                return <span key={label + String(index)}>{label}<ArrowDownRight size={31} /></span>;
+                return <span key={label + String(index)}>{label}<ArrowDownRight size={22} /></span>;
               })}
             </div>;
           })}
@@ -512,7 +502,7 @@ export function OneArcSite() {
             <p className="fade-up">Follow the residence from its bright social rooms to the quiet, private spaces below.</p>
           </div>
           <div className="container overview-stage">
-            <aside className="overview-aside fade-up"><span>Scroll to tour</span><p>Moving images and connected perspectives reveal the home’s material palette and changing light.</p><div><span>01</span><i /><span>03</span></div></aside>
+            <aside className="overview-aside fade-up"><span>Video tour</span><p>A concise walkthrough and three perspectives reveal the home’s material palette and changing light.</p><div><span>01</span><i /><span>03</span></div></aside>
             <div className="overview-device" data-view="true">
               <div className="device-bar"><span /><span>OneArc walkthrough</span><span>•••</span></div>
               <video className="overview-video" autoPlay muted loop playsInline poster="/media/property-08.avif"><source src="/media/walkthrough.mp4" type="video/mp4" /></video>
