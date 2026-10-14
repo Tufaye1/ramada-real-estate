@@ -16,5 +16,5 @@
 
 ## Current focus
 
-Complete. Private deployment: https://onearc-residence.hasann12.chatgpt.site
+Ramada rebrand and copy replacement complete and browser-verified. The existing design, media, motion, and interactions remain unchanged. Publication is pending.
 

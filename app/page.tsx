@@ -1,5 +1,5 @@
-import { OneArcSite } from "@/components/onearc-site";
+import { RamadaSite } from "@/components/onearc-site";
 
 export default function Home() {
-  return <OneArcSite />;
+  return <RamadaSite />;
 }

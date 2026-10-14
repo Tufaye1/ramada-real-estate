@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "OneArc Residence — Elevated Living in New York",
+  title: "Ramada Builders Ltd. — Halal Real Estate in Dhaka",
   description:
-    "Explore OneArc Residence, a considered New York home shaped by warm materials, generous light, and thoughtful modern living.",
+    "Ramada Builders partners with landowners, buyers, and investors to create transparent, Shariah-conscious real estate in Dhaka.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

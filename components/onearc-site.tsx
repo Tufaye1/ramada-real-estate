@@ -8,7 +8,6 @@ import {
   ArrowDownRight,
   ArrowLeft,
   ArrowRight,
-  Bath,
   BedDouble,
   Building2,
   ChevronRight,
@@ -34,30 +33,31 @@ import {
 } from "react";
 
 const features = [
-  ["Modern living upgrades", "Voice and app controls place light, climate, privacy, and security within effortless reach.", Sparkles],
-  ["Considered architecture", "Long sightlines, honest materials, and carefully framed daylight make every room feel composed.", Building2],
-  ["A private city retreat", "Thoughtful landscaping and acoustic insulation create calm without disconnecting you from New York.", Trees],
+  ["Trust", "The price, delivery expectations, and partnership terms are made clear before work begins.", Sparkles],
+  ["Transparency", "Landowners and investors see how the project is structured, costed, and delivered.", Building2],
+  ["Community", "Every Ramada project is designed to create lasting value for families and neighbourhoods.", Trees],
 ] as const;
 
 const rooms = [
-  ["Living room", "The living room is the heart of the home—a space designed for comfort, relaxation, and gathering.", "250 m²", "Living", "White", "/media/property-03.avif"],
-  ["Dining room", "The dining room serves as the home’s centerpiece—a place crafted for comfort, ease, and time together.", "300 m²", "Dining", "Brown", "/media/property-04.avif"],
-  ["Kitchen", "The heart of every home is the kitchen—a generous space for cooking, unwinding, and connecting.", "200 m²", "Kitchen", "Cream", "/media/property-06.avif"],
-  ["Playground", "A garden room made for movement, warmth, rest, and unhurried moments shared with loved ones.", "350 m²", "Garden", "Green", "/media/property-09.avif"],
-  ["Swimming pool", "The pool anchors the home—offering a private haven for comfort, calm, and meaningful conversation.", "150 m²", "Pool", "Stone", "/media/property-10.avif"],
+  ["Land share", "Turn your plot into a share of the finished building, with ownership, profit-share terms, and Shariah review handled before you sign.", "Keep ownership", "Asset share", "Shariah-reviewed", "/media/property-03.avif"],
+  ["Property development", "We co-develop with landowners and investors on terms agreed upfront, including unit split, cost sharing, and timeline.", "Unit split", "Open-book", "Approvals", "/media/property-04.avif"],
+  ["Construction service", "One quote, one schedule, and one point of contact—from planning and procurement through finishing.", "Fixed price", "Milestones", "Site reporting", "/media/property-06.avif"],
+  ["Ready flat sale", "See the actual residence and receive the full price, payment schedule, and ownership documents on the same visit.", "Real unit", "Full price", "Clean title", "/media/property-09.avif"],
+  ["Halal investment", "Asset-backed real estate investment with interest-free structuring, investor reporting, and independent Shariah oversight.", "No riba", "Reporting", "Asset-backed", "/media/property-10.avif"],
 ] as const;
 
 const plans = [
-  ["Apartment", "4", "2,200 sq ft", "/media/property-13.avif"],
-  ["Simplex", "2", "1,860 sq ft", "/media/property-14.avif"],
-  ["Duplex", "2", "3,240 sq ft", "/media/property-15.avif"],
-  ["Studio", "6", "980 sq ft", "/media/property-16.avif"],
+  ["Land Share", "Landowner", "Keep ownership while sharing in the completed asset", "/media/property-13.avif"],
+  ["Development", "Partner", "Co-develop with terms and costs agreed upfront", "/media/property-14.avif"],
+  ["Construction", "Client", "Fixed-price delivery with milestone reporting", "/media/property-15.avif"],
+  ["Ready Flats", "Buyer", "View the real unit and full ownership documents", "/media/property-16.avif"],
+  ["Investment", "Investor", "Interest-free, asset-backed real estate participation", "/media/property-13.avif"],
 ] as const;
 
 const reviews = [
-  ["Working with OneArc feels like a partnership; every detail was met with care, clarity, and genuine respect for how we wanted to live.", "Alonso D. Dowson", "House owner"],
-  ["The process felt unusually calm. We always knew what came next, and the finished home is even more considered than the drawings promised.", "Miranda Lee", "Resident"],
-  ["OneArc balances character and restraint beautifully. It is rare to find a home that photographs well and lives even better.", "Nelson M.", "Property investor"],
+  ["We build a great relation with them, due to their...", "Mr. Hamid", "Land owner"],
+  ["The communication was exceptional...", "Mahmud H", "Land owner partner"],
+  ["Three projects in...", "Rashid M", "Investor since 2019"],
 ] as const;
 
 function ArcMark() {
@@ -107,16 +107,16 @@ function Heading({
 
 function Neighbourhood() {
   const pins = [
-    ["5 star hotel", "1.3 km", "15%", "30%"],
-    ["Hospital", "1.2 km", "69%", "22%"],
-    ["Park", "1 km", "80%", "66%"],
-    ["Shopping mall", "1 km", "31%", "70%"],
-    ["School", "1.5 km", "54%", "82%"],
-    ["Restaurant", ".5 km", "10%", "78%"],
+    ["Schools", "Bashundhara", "15%", "30%"],
+    ["Healthcare", "Bashundhara", "69%", "22%"],
+    ["Green space", "Bashundhara", "80%", "66%"],
+    ["Shopping", "Bashundhara", "31%", "70%"],
+    ["Community", "Bashundhara", "54%", "82%"],
+    ["Dining", "Bashundhara", "10%", "78%"],
   ];
   return (
     <div className="map-visual image-reveal" data-view="true">
-      <Image src="/media/property-12.avif" alt="Neighbourhood surrounding OneArc Residence" fill sizes="100vw" />
+      <Image src="/media/property-12.avif" alt="Neighbourhood surrounding Ramada Dream House" fill sizes="100vw" />
       <div className="map-wash" />
       {pins.map(function (pin) {
         return (
@@ -126,13 +126,13 @@ function Neighbourhood() {
         );
       })}
       <div className="map-pin map-pin--home">
-        <span className="pulse" /><Building2 size={17} aria-hidden="true" /><span>OneArc property</span>
+        <span className="pulse" /><Building2 size={17} aria-hidden="true" /><span>Ramada Dream House</span>
       </div>
     </div>
   );
 }
 
-export function OneArcSite() {
+export function RamadaSite() {
   const rootRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [feature, setFeature] = useState(0);
@@ -143,11 +143,11 @@ export function OneArcSite() {
 
   const planDetails = useMemo(function () {
     return [
-      ["Residences", plans[plan][1]],
-      ["Address", "1/A, Booston Tower, NYC"],
-      ["Architecture", "Ronald Dowson"],
-      ["Available", "Kitchen, balcony, dining, bedroom, storage"],
-      ["Size", plans[plan][2]],
+      ["For", plans[plan][1]],
+      ["Base", "Bashundhara R/A, Dhaka"],
+      ["Terms", "Defined before work begins"],
+      ["Standard", "Transparent and Shariah-conscious"],
+      ["Focus", plans[plan][2]],
     ];
   }, [plan]);
 
@@ -388,7 +388,7 @@ export function OneArcSite() {
     setSent(true);
   }
 
-  const nav = [["Home", "home"], ["About", "about"], ["Rooms", "property"], ["Contact", "contact"]];
+  const nav = [["Home", "home"], ["About", "about"], ["Services", "property"], ["Project", "overview"], ["Contact", "contact"]];
   const CurrentFeatureIcon = features[feature][2];
 
   return (
@@ -397,12 +397,12 @@ export function OneArcSite() {
       <div className="cursor" aria-hidden="true"><span>View</span></div>
 
       <header className="site-header">
-        <a href="#home" className="wordmark" aria-label="OneArc home"><ArcMark />OneArc</a>
+        <a href="#home" className="wordmark" aria-label="Ramada home"><ArcMark />Ramada</a>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {nav.map(function (item) { return <a href={"#" + item[1]} key={item[0]}>{item[0]}</a>; })}
         </nav>
         <div className="header-actions">
-          <Button href="#contact">Schedule a visit</Button>
+          <Button href="#contact">Let&apos;s connect</Button>
           <button className="menu-button" type="button" onClick={function () { setMenuOpen(true); }} aria-label="Open menu"><Menu size={22} /></button>
         </div>
       </header>
@@ -414,26 +414,26 @@ export function OneArcSite() {
             return <a href={"#" + item[1]} key={item[0]} style={{ transitionDelay: String(index * 70) + "ms" }} onClick={function () { setMenuOpen(false); }}>{item[0]}</a>;
           })}
         </nav>
-        <p>320 40th Street B4<br />New York, NY 10019</p>
+        <p>5th Floor, Rupayan Shopping Square<br />Bashundhara R/A, Dhaka 1229</p>
       </div>
 
       <main>
         <section className="hero section" id="home">
           <div className="container hero-copy">
-            <p className="hero-address fade-up">320 40th Street B4, New York, NY 10019</p>
-            <Heading level={1} className="hero-title">OneArc Residence</Heading>
-            <div className="hero-buttons fade-up"><Button href="#property">Discover more</Button><Button href="tel:+12345678900" variant="outline">Call us now</Button></div>
+            <p className="hero-address fade-up">Halal real estate · Dhaka</p>
+            <Heading level={1} className="hero-title">Your land is worth more than you&apos;ve been offered.</Heading>
+            <div className="hero-buttons fade-up"><Button href="#contact">Get a free land valuation</Button><Button href="#overview" variant="outline">See our project</Button></div>
           </div>
           <div className="container hero-media image-reveal" data-view="true">
-            <Image src="/media/property-01.avif" alt="OneArc Residence exterior" fill priority sizes="(max-width: 700px) 100vw, 1300px" />
-            <div className="hero-index"><span>OneArc</span><span>Residence 01</span></div>
+            <Image src="/media/property-01.avif" alt="Ramada Dream House exterior" fill priority sizes="(max-width: 700px) 100vw, 1300px" />
+            <div className="hero-index"><span>Ramada Builders</span><span>Dream House 01</span></div>
           </div>
           <div className="container hero-stats fade-up">
             {[
-              ["3,665", "sq ft", "Property size", Ruler],
-              ["8+", "", "Bedrooms", BedDouble],
-              ["4+", "", "Bathrooms", Bath],
-              ["2+", "", "Lower levels", Building2],
+              ["2026", "", "Established", Building2],
+              ["4", "", "Founders", BedDouble],
+              ["5", "", "Ways to work", Ruler],
+              ["1", "", "Featured project", Building2],
             ].map(function (stat) {
               const Icon = stat[3] as typeof Ruler;
               return <div className="hero-stat" key={String(stat[2])}><p>{String(stat[0])} <small>{String(stat[1])}</small></p><span>{String(stat[2])}</span><Icon size={19} aria-hidden="true" /></div>;
@@ -443,17 +443,17 @@ export function OneArcSite() {
 
         <section className="section story" id="about">
           <div className="container">
-            <Eyebrow>Why choose our property?</Eyebrow>
+            <Eyebrow>Why Ramada</Eyebrow>
             <div className="story-grid">
               <div className="story-copy">
-                <Heading>Discover the story behind this beautiful and considered property.</Heading>
-                <p className="body-large fade-up">A quiet New York residence where architecture, technology, and daily life move together with ease.</p>
-                <p className="fade-up">Voice and app-based automation keeps the home responsive while tactile materials and generous natural light make every room feel unmistakably human.</p>
-                <Button href="#overview" variant="outline">Gallery overview</Button>
+                <Heading>We started Ramada because we were tired of watching people get burned.</Heading>
+                <p className="body-large fade-up">Four friends. Telecom, banking, global trade, and energy. 71 years of running businesses where the numbers had to add up.</p>
+                <p className="fade-up">Ramada was built around trust, transparent dealings, craftsmanship, and decisions measured in decades—not quarters.</p>
+                <Button href="#overview" variant="outline">Meet our project</Button>
               </div>
               <div className="story-visual image-reveal" data-view="true">
-                <Image src="/media/property-02.avif" alt="OneArc Residence interior" fill sizes="(max-width: 800px) 100vw, 50vw" />
-                <span className="image-note">Natural light, from first coffee to last conversation.</span>
+                <Image src="/media/property-02.avif" alt="Ramada residential interior" fill sizes="(max-width: 800px) 100vw, 50vw" />
+                <span className="image-note">Four founders. One accountable team.</span>
               </div>
               <article className="feature-card fade-up">
                 <div className="feature-icon"><CurrentFeatureIcon size={23} /></div>
@@ -471,7 +471,7 @@ export function OneArcSite() {
         <section className="marquee" aria-label="Property qualities">
           {["one", "two"].map(function (row) {
             return <div className={"marquee-row marquee-row--" + row} key={row}>
-              {["Cutting-Edge Architecture", "Next-Gen Living", "Quality Living", "Cutting-Edge Architecture", "Next-Gen Living", "Quality Living"].map(function (label, index) {
+              {["Fixed Terms", "Transparent Costing", "Halal Structure", "Fixed Terms", "Transparent Costing", "Halal Structure"].map(function (label, index) {
                 return <span key={label + String(index)}>{label}<ArrowDownRight size={22} /></span>;
               })}
             </div>;
@@ -479,7 +479,7 @@ export function OneArcSite() {
         </section>
 
         <section className="section property" id="property">
-          <div className="container section-intro centered"><Heading className="display-heading">Property</Heading><p className="fade-up">Room overview with a composed, livable point of view.</p></div>
+          <div className="container section-intro centered"><Heading className="display-heading">Five ways in</Heading><p className="fade-up">You own land. You want a flat. You want returns. Start anywhere.</p></div>
           <div className="container room-stack">
             {rooms.map(function (room, index) {
               return (
@@ -487,9 +487,9 @@ export function OneArcSite() {
                   <div className="room-copy">
                     <span className="room-number">0{index + 1}</span><h3>{room[0]}</h3><p>{room[1]}</p>
                     <div className="chips">{[room[2], room[3], room[4]].map(function (chip) { return <span key={chip}>{chip}</span>; })}</div>
-                    <a href="#floor-plans">Explore room <ArrowRight size={16} /></a>
+                    <a href="#floor-plans">Discuss this service <ArrowRight size={16} /></a>
                   </div>
-                  <div className="room-image" data-view="true"><Image src={room[5]} alt={room[0] + " at OneArc Residence"} fill sizes="(max-width: 800px) 100vw, 55vw" /></div>
+                  <div className="room-image" data-view="true"><Image src={room[5]} alt={room[0] + " by Ramada Builders"} fill sizes="(max-width: 800px) 100vw, 55vw" /></div>
                 </article>
               );
             })}
@@ -498,82 +498,83 @@ export function OneArcSite() {
 
         <section className="section overview" id="overview">
           <div className="container overview-head">
-            <div><Eyebrow>Property overview</Eyebrow><Heading>Take a detailed look at this stunning property.</Heading></div>
-            <p className="fade-up">Follow the residence from its bright social rooms to the quiet, private spaces below.</p>
+            <div><Eyebrow>Featured project</Eyebrow><Heading>Ramada Dream House — Bashundhara R/A, Block N.</Heading></div>
+            <p className="fade-up">Now in construction, for families who want space without leaving Dhaka&apos;s protected residential grid.</p>
           </div>
           <div className="container overview-stage">
-            <aside className="overview-aside fade-up"><span>Video tour</span><p>A concise walkthrough and three perspectives reveal the home’s material palette and changing light.</p><div><span>01</span><i /><span>03</span></div></aside>
+            <aside className="overview-aside fade-up"><span>Project view</span><p>A concise look at the spaces, materials, and everyday living Ramada is building toward.</p><div><span>01</span><i /><span>03</span></div></aside>
             <div className="overview-device" data-view="true">
-              <div className="device-bar"><span /><span>OneArc walkthrough</span><span>•••</span></div>
+              <div className="device-bar"><span /><span>Ramada Dream House</span><span>•••</span></div>
               <video className="overview-video" autoPlay muted loop playsInline poster="/media/property-08.avif"><source src="/media/walkthrough.mp4" type="video/mp4" /></video>
             </div>
             <div className="overview-gallery">
               {["05", "07", "08"].map(function (number) {
-                return <div className="image-reveal" data-view="true" key={number}><Image src={"/media/property-" + number + ".avif"} alt={"OneArc interior detail " + number} fill sizes="(max-width: 800px) 100vw, 30vw" /></div>;
+                return <div className="image-reveal" data-view="true" key={number}><Image src={"/media/property-" + number + ".avif"} alt={"Ramada Dream House detail " + number} fill sizes="(max-width: 800px) 100vw, 30vw" /></div>;
               })}
             </div>
           </div>
         </section>
 
         <section className="section neighbourhood">
-          <div className="container split-heading"><div><Eyebrow>Neighbourhood</Eyebrow><Heading>Everything you need, close enough to feel effortless.</Heading></div><p className="fade-up">Green space, culture, dining, and everyday essentials form a walkable extension of home.</p></div>
+          <div className="container split-heading"><div><Eyebrow>Location</Eyebrow><Heading>A Bashundhara address shaped for family life.</Heading></div><p className="fade-up">Ramada Dream House is located in Block N, within one of Dhaka&apos;s most established residential communities.</p></div>
           <div className="container"><Neighbourhood /></div>
         </section>
 
         <section className="section floor-plans" id="floor-plans">
-          <div className="container split-heading"><div><Eyebrow>Floor planning</Eyebrow><Heading>Explore every level with our detailed floor planning.</Heading></div><p className="fade-up">Compare four considered layouts, each balancing privacy, daylight, and everyday flow.</p></div>
+          <div className="container split-heading"><div><Eyebrow>Services</Eyebrow><Heading>Five ways in. One standard throughout.</Heading></div><p className="fade-up">Whether you&apos;re handing us land, buying a flat, or putting capital to work, the terms are made clear before you begin.</p></div>
           <div className="container plans-layout">
-            <div className="plan-tabs" role="tablist" aria-label="Floor plan types" aria-orientation="vertical">
+            <div className="plan-tabs" role="tablist" aria-label="Ramada service types" aria-orientation="vertical">
               {plans.map(function (item, index) {
                 return <button type="button" role="tab" aria-selected={plan === index} aria-controls="plan-panel" tabIndex={plan === index ? 0 : -1} className={plan === index ? "is-active" : ""} onClick={function () { switchPlan(index); }} onKeyDown={function (event) { tabKey(event, index); }} key={item[0]}>{item[0]}<ArrowRight size={18} /></button>;
               })}
             </div>
             <div className="plan-content" id="plan-panel" role="tabpanel">
-              <div className="plan-graphic" data-view="true"><Image src={plans[plan][3]} alt={plans[plan][0] + " floor plan"} fill sizes="(max-width: 800px) 100vw, 40vw" /></div>
+              <div className="plan-graphic" data-view="true"><Image src={plans[plan][3]} alt={plans[plan][0] + " planning by Ramada"} fill sizes="(max-width: 800px) 100vw, 40vw" /></div>
               <div className="plan-details">
-                <span className="plan-label">Plan 0{plan + 1}</span><h3>{plans[plan][0]}</h3>
+                <span className="plan-label">Service 0{plan + 1}</span><h3>{plans[plan][0]}</h3>
                 <dl>{planDetails.map(function (detail) { return <div key={detail[0]}><dt>{detail[0]}</dt><dd>{detail[1]}</dd></div>; })}</dl>
-                <div className="plan-actions"><Button href="#contact">Book a visit</Button><Button href="tel:+12345678900" variant="outline">Call us now</Button></div>
+                <div className="plan-actions"><Button href="#contact">Discuss this service</Button><Button href="tel:+8801711481155" variant="outline">Call us now</Button></div>
               </div>
             </div>
           </div>
         </section>
 
         <section className="section contact" id="contact">
-          <div className="container section-intro centered"><Heading className="display-heading">Any inquiry</Heading><p className="fade-up">Get in touch.</p></div>
+          <div className="container section-intro centered"><Heading className="display-heading">Let&apos;s connect</Heading><p className="fade-up">Tell us what you&apos;re thinking. We&apos;ll tell you straight.</p></div>
           <div className="container contact-grid">
             <div className="contact-info">
-              <Eyebrow>Catch us here</Eyebrow><h3 className="fade-up">A conversation is the best place to begin.</h3>
+              <Eyebrow>Ramada Builders Ltd.</Eyebrow><h3 className="fade-up">A real person from the Ramada team replies within one working day.</h3>
               {[
-                [Mail, "Email", "info@onearc.com", "mailto:info@onearc.com"],
-                [Phone, "Phone", "+123 456 789 00", "tel:+12345678900"],
-                [MapPin, "Address", "14960 Florence Trail, Apple Valley, MN 55124", "#contact"],
-                [Clock3, "Hours", "Monday – Sunday, 9am – 7pm EST", "#contact"],
+                [Mail, "Email", "info@ramadabuildersltd.com", "mailto:info@ramadabuildersltd.com"],
+                [Phone, "Phone", "+880 1711 48 11 55", "tel:+8801711481155"],
+                [MapPin, "Address", "5th Floor, Rupayan Shopping Square, Plot 2, Block G, Bashundhara R/A, Dhaka 1229", "#contact"],
+                [Clock3, "Hours", "Saturday – Thursday, 9:00 AM – 5:00 PM", "#contact"],
               ].map(function (row) {
                 const Icon = row[0] as typeof Mail;
                 return <a className="contact-row fade-up" href={String(row[3])} key={String(row[1])}><Icon size={20} /><span><small>{String(row[1])}</small>{String(row[2])}</span><ChevronRight size={18} /></a>;
               })}
             </div>
             <form className="contact-form fade-up" onSubmit={submit}>
-              <label><input name="name" required placeholder=" " /><span>Name</span></label>
-              <label><input name="email" required type="email" placeholder=" " /><span>Email</span></label>
-              <label><input name="subject" required placeholder=" " /><span>Subject</span></label>
-              <label className="select-label"><select name="budget" defaultValue=""><option value="" disabled>Choose budget</option><option>$9,200 – $10,200</option><option>$10,200 – $15,000</option><option>$15,000+</option></select><span>Budget</span></label>
-              <label className="form-message"><textarea name="message" required placeholder=" " rows={5} /><span>Message</span></label>
-              <button className="form-submit" type="submit"><span>{sent ? "Thank you — we’ll be in touch" : "Get a free quote"}</span><ArrowRight size={18} /></button>
+              <label className="select-label"><select name="inquiry" required defaultValue=""><option value="" disabled>Select one</option><option>Buyer / Investor</option><option>Landowner</option></select><span>I am a...</span></label>
+              <label><input name="name" required placeholder=" " /><span>Full name</span></label>
+              <label><input name="phone" required type="tel" placeholder=" " /><span>Phone (WhatsApp preferred)</span></label>
+              <label><input name="email" type="email" placeholder=" " /><span>Email</span></label>
+              <label><input name="budget" placeholder=" " /><span>Budget or plot size (optional)</span></label>
+              <label className="form-message"><textarea name="message" required placeholder=" " rows={5} /><span>What are you considering?</span></label>
+              <button className="form-submit" type="submit"><span>{sent ? "Thank you — we’ll be in touch" : "Send my inquiry"}</span><ArrowRight size={18} /></button>
             </form>
           </div>
         </section>
 
         <section className="section facts">
-          <div className="container"><Eyebrow>Some more fun facts about the company</Eyebrow>
+          <div className="container"><Eyebrow>Ramada at a glance</Eyebrow>
             <div className="facts-grid">
               {[
-                [1, 0, "k+", "Properties delivered"],
-                [2.3, 1, "k+", "Clients served worldwide"],
-                [5, 0, "+", "Design awards"],
-                [12, 0, "+", "Daily quote messages"],
-                [4.9, 1, "", "Rating out of 5.0"],
+                [4, 0, "", "Founders"],
+                [71, 0, "+", "Combined years in business"],
+                [5, 0, "", "Ways to work with us"],
+                [1, 0, "", "Featured project"],
+                [2026, 0, "", "Established"],
               ].map(function (fact) {
                 return <div className="fact fade-up" key={String(fact[3])}><strong className="counter" data-value={fact[0]} data-decimals={fact[1]} data-suffix={fact[2]}>0{String(fact[2])}</strong><span>{String(fact[3])}</span></div>;
               })}
@@ -582,7 +583,7 @@ export function OneArcSite() {
         </section>
 
         <section className="section reviews">
-          <div className="container reviews-head"><Eyebrow>Property review</Eyebrow><div><Heading>Home—a space designed for comfort.</Heading><p><strong>4.9</strong> / 5.0</p></div></div>
+          <div className="container reviews-head"><Eyebrow>Landowner and investor voices</Eyebrow><div><Heading>Relationships built for the long view.</Heading><p><strong>3</strong> voices</p></div></div>
           <div className="container review-stage" onMouseEnter={function () { setPaused(true); }} onMouseLeave={function () { setPaused(false); }}>
             <div className="review-track">
               {reviews.map(function (item, index) {
@@ -592,28 +593,28 @@ export function OneArcSite() {
             <div className="review-controls"><button type="button" aria-label="Previous review" onClick={function () { setReview((review - 1 + reviews.length) % reviews.length); }}><ArrowLeft /></button><span>0{review + 1} / 0{reviews.length}</span><button type="button" aria-label="Next review" onClick={function () { setReview((review + 1) % reviews.length); }}><ArrowRight /></button></div>
           </div>
           <div className="container review-list">
-            {["Alonso D.", "Miranda", "Nelson M.", "Alvon B."].map(function (name, index) {
-              return <div className="fade-up" key={name}><span>0{index + 1}</span><strong>{name}</strong><p>{["A rare sense of calm.", "Thoughtful at every turn.", "Quietly exceptional.", "Feels made for real life."][index]}</p><ArrowDownRight /></div>;
+            {["Fixed terms", "Transparent costing", "Halal structure", "Leadership access"].map(function (name, index) {
+              return <div className="fade-up" key={name}><span>0{index + 1}</span><strong>{name}</strong><p>{["Agreed before work begins.", "A clear view of project costs.", "Reviewed with independent oversight.", "Direct accountability from the team."][index]}</p><ArrowDownRight /></div>;
             })}
           </div>
           <div className="container savings-card">
-            <Image src="/media/property-11.avif" alt="OneArc private interior" fill sizes="100vw" />
-            <div><Eyebrow>Quality house solutions</Eyebrow><p>On average for home owner cost savings.</p><strong className="counter" data-value="98.8" data-decimals="1" data-comma="true" data-suffix="%">0%</strong></div>
+            <Image src="/media/property-11.avif" alt="Ramada residential interior" fill sizes="100vw" />
+            <div><Eyebrow>Four founders</Eyebrow><p>Combined experience across telecom, banking, global trade, and energy.</p><strong className="counter" data-value="71" data-decimals="0" data-suffix="+">0+</strong></div>
           </div>
         </section>
 
         <section className="dark-shell">
           <div className="container cta-grid">
             <div className="cta-copy">
-              <a href="#home" className="wordmark wordmark--light"><ArcMark />OneArc</a>
-              <Heading>Let’s help you find the perfect property—or top value for the one you own.</Heading>
-              <div className="contact-lines"><a href="tel:+12345678900"><span>+123 456 789 00</span><ArrowDownRight /></a><a href="mailto:info@onearc.com"><span>info@onearc.com</span><ArrowDownRight /></a></div>
+              <a href="#home" className="wordmark wordmark--light"><ArcMark />Ramada</a>
+              <Heading>Tell us what you&apos;re considering. We&apos;ll tell you straight.</Heading>
+              <div className="contact-lines"><a href="tel:+8801711481155"><span>+880 1711 48 11 55</span><ArrowDownRight /></a><a href="mailto:info@ramadabuildersltd.com"><span>info@ramadabuildersltd.com</span><ArrowDownRight /></a></div>
             </div>
-            <div className="cta-image" data-view="true"><Image src="/media/property-11.avif" alt="OneArc private interior" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+            <div className="cta-image" data-view="true"><Image src="/media/property-11.avif" alt="Ramada residential interior" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
           </div>
           <footer className="container footer">
             <div className="socials"><span>Follow us.</span>{[["𝕏", "X"], ["◎", "Instagram"], ["in", "LinkedIn"], ["▶", "YouTube"]].map(function (social) { return <a href="#home" aria-label={social[1]} key={social[1]}><b>{social[0]}</b></a>; })}</div>
-            <div className="footer-bottom"><p>Copyright and design by @YourStudio — 2026</p><nav><a href="#about">About us</a><a href="#property">Properties</a><a href="#floor-plans">Planning</a><a href="#home">Top</a></nav></div>
+            <div className="footer-bottom"><p>© Ramada Builders Ltd. — 2026</p><nav><a href="#about">About us</a><a href="#property">Services</a><a href="#overview">Project</a><a href="#home">Top</a></nav></div>
           </footer>
         </section>
       </main>
