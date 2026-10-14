@@ -14,4 +14,5 @@
 - Preserve the existing one-page layout, imagery, motion, and interactions while changing the public brand and supported copy from OneArc to Ramada Builders Ltd.
 - Use the rewritten Ramada sales copy supplied by the user, map Ramada Dream House to the existing project overview, and omit all bracketed or unsupported project figures.
 - Replace unsupported OneArc statistics and testimonials with only the company facts, service count, founder experience, project name, address, and testimonials present in the supplied Ramada document.
+- Keep the private Sites deployment and add a separate static-export GitHub Pages workflow for client review at `ramada.tufayelhossain.com`.
 

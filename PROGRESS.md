@@ -13,8 +13,10 @@
 - [x] Verify the page in a browser at desktop and mobile widths.
 - [x] Package, push, and publish the private Site.
 - [x] Confirm successful deployment and record the final URL.
+- [x] Add a GitHub Pages build and deployment workflow.
+- [x] Configure the Cloudflare CNAME for the client-review subdomain.
 
 ## Current focus
 
-Complete. Ramada rebrand and copy replacement are browser-verified and published at https://onearc-residence.hasann12.chatgpt.site. The existing design, media, motion, and interactions remain unchanged.
+Ramada rebrand and copy replacement are browser-verified. GitHub Pages and Cloudflare DNS are configured for client review at https://ramada.tufayelhossain.com, with future pushes to `main` deployed automatically.
 

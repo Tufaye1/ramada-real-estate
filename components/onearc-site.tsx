@@ -32,6 +32,9 @@ import {
   useState,
 } from "react";
 
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const assetPath = (path: string) => `${publicBasePath}${path}`;
+
 const features = [
   ["Trust", "The price, delivery expectations, and partnership terms are made clear before work begins.", Sparkles],
   ["Transparency", "Landowners and investors see how the project is structured, costed, and delivered.", Building2],
@@ -39,19 +42,19 @@ const features = [
 ] as const;
 
 const rooms = [
-  ["Land share", "Turn your plot into a share of the finished building, with ownership, profit-share terms, and Shariah review handled before you sign.", "Keep ownership", "Asset share", "Shariah-reviewed", "/media/property-03.avif"],
-  ["Property development", "We co-develop with landowners and investors on terms agreed upfront, including unit split, cost sharing, and timeline.", "Unit split", "Open-book", "Approvals", "/media/property-04.avif"],
-  ["Construction service", "One quote, one schedule, and one point of contact—from planning and procurement through finishing.", "Fixed price", "Milestones", "Site reporting", "/media/property-06.avif"],
-  ["Ready flat sale", "See the actual residence and receive the full price, payment schedule, and ownership documents on the same visit.", "Real unit", "Full price", "Clean title", "/media/property-09.avif"],
-  ["Halal investment", "Asset-backed real estate investment with interest-free structuring, investor reporting, and independent Shariah oversight.", "No riba", "Reporting", "Asset-backed", "/media/property-10.avif"],
+  ["Land share", "Turn your plot into a share of the finished building, with ownership, profit-share terms, and Shariah review handled before you sign.", "Keep ownership", "Asset share", "Shariah-reviewed", assetPath("/media/property-03.avif")],
+  ["Property development", "We co-develop with landowners and investors on terms agreed upfront, including unit split, cost sharing, and timeline.", "Unit split", "Open-book", "Approvals", assetPath("/media/property-04.avif")],
+  ["Construction service", "One quote, one schedule, and one point of contact—from planning and procurement through finishing.", "Fixed price", "Milestones", "Site reporting", assetPath("/media/property-06.avif")],
+  ["Ready flat sale", "See the actual residence and receive the full price, payment schedule, and ownership documents on the same visit.", "Real unit", "Full price", "Clean title", assetPath("/media/property-09.avif")],
+  ["Halal investment", "Asset-backed real estate investment with interest-free structuring, investor reporting, and independent Shariah oversight.", "No riba", "Reporting", "Asset-backed", assetPath("/media/property-10.avif")],
 ] as const;
 
 const plans = [
-  ["Land Share", "Landowner", "Keep ownership while sharing in the completed asset", "/media/property-13.avif"],
-  ["Development", "Partner", "Co-develop with terms and costs agreed upfront", "/media/property-14.avif"],
-  ["Construction", "Client", "Fixed-price delivery with milestone reporting", "/media/property-15.avif"],
-  ["Ready Flats", "Buyer", "View the real unit and full ownership documents", "/media/property-16.avif"],
-  ["Investment", "Investor", "Interest-free, asset-backed real estate participation", "/media/property-13.avif"],
+  ["Land Share", "Landowner", "Keep ownership while sharing in the completed asset", assetPath("/media/property-13.avif")],
+  ["Development", "Partner", "Co-develop with terms and costs agreed upfront", assetPath("/media/property-14.avif")],
+  ["Construction", "Client", "Fixed-price delivery with milestone reporting", assetPath("/media/property-15.avif")],
+  ["Ready Flats", "Buyer", "View the real unit and full ownership documents", assetPath("/media/property-16.avif")],
+  ["Investment", "Investor", "Interest-free, asset-backed real estate participation", assetPath("/media/property-13.avif")],
 ] as const;
 
 const reviews = [
@@ -116,7 +119,7 @@ function Neighbourhood() {
   ];
   return (
     <div className="map-visual image-reveal" data-view="true">
-      <Image src="/media/property-12.avif" alt="Neighbourhood surrounding Ramada Dream House" fill sizes="100vw" />
+      <Image src={assetPath("/media/property-12.avif")} alt="Neighbourhood surrounding Ramada Dream House" fill sizes="100vw" />
       <div className="map-wash" />
       {pins.map(function (pin) {
         return (
@@ -304,7 +307,7 @@ export function RamadaSite() {
           ease: "back.out(1.8)",
           scrollTrigger: { trigger: ".map-visual", start: "top 72%", once: true },
         });
-      }, root);
+      }, root!);
 
       ScrollTrigger.refresh();
     }
@@ -425,7 +428,7 @@ export function RamadaSite() {
             <div className="hero-buttons fade-up"><Button href="#contact">Get a free land valuation</Button><Button href="#overview" variant="outline">See our project</Button></div>
           </div>
           <div className="container hero-media image-reveal" data-view="true">
-            <Image src="/media/property-01.avif" alt="Ramada Dream House exterior" fill priority sizes="(max-width: 700px) 100vw, 1300px" />
+            <Image src={assetPath("/media/property-01.avif")} alt="Ramada Dream House exterior" fill priority sizes="(max-width: 700px) 100vw, 1300px" />
             <div className="hero-index"><span>Ramada Builders</span><span>Dream House 01</span></div>
           </div>
           <div className="container hero-stats fade-up">
@@ -452,7 +455,7 @@ export function RamadaSite() {
                 <Button href="#overview" variant="outline">Meet our project</Button>
               </div>
               <div className="story-visual image-reveal" data-view="true">
-                <Image src="/media/property-02.avif" alt="Ramada residential interior" fill sizes="(max-width: 800px) 100vw, 50vw" />
+                <Image src={assetPath("/media/property-02.avif")} alt="Ramada residential interior" fill sizes="(max-width: 800px) 100vw, 50vw" />
                 <span className="image-note">Four founders. One accountable team.</span>
               </div>
               <article className="feature-card fade-up">
@@ -505,11 +508,11 @@ export function RamadaSite() {
             <aside className="overview-aside fade-up"><span>Project view</span><p>A concise look at the spaces, materials, and everyday living Ramada is building toward.</p><div><span>01</span><i /><span>03</span></div></aside>
             <div className="overview-device" data-view="true">
               <div className="device-bar"><span /><span>Ramada Dream House</span><span>•••</span></div>
-              <video className="overview-video" autoPlay muted loop playsInline poster="/media/property-08.avif"><source src="/media/walkthrough.mp4" type="video/mp4" /></video>
+              <video className="overview-video" autoPlay muted loop playsInline poster={assetPath("/media/property-08.avif")}><source src={assetPath("/media/walkthrough.mp4")} type="video/mp4" /></video>
             </div>
             <div className="overview-gallery">
               {["05", "07", "08"].map(function (number) {
-                return <div className="image-reveal" data-view="true" key={number}><Image src={"/media/property-" + number + ".avif"} alt={"Ramada Dream House detail " + number} fill sizes="(max-width: 800px) 100vw, 30vw" /></div>;
+                return <div className="image-reveal" data-view="true" key={number}><Image src={assetPath("/media/property-" + number + ".avif")} alt={"Ramada Dream House detail " + number} fill sizes="(max-width: 800px) 100vw, 30vw" /></div>;
               })}
             </div>
           </div>
@@ -598,7 +601,7 @@ export function RamadaSite() {
             })}
           </div>
           <div className="container savings-card">
-            <Image src="/media/property-11.avif" alt="Ramada residential interior" fill sizes="100vw" />
+            <Image src={assetPath("/media/property-11.avif")} alt="Ramada residential interior" fill sizes="100vw" />
             <div><Eyebrow>Four founders</Eyebrow><p>Combined experience across telecom, banking, global trade, and energy.</p><strong className="counter" data-value="71" data-decimals="0" data-suffix="+">0+</strong></div>
           </div>
         </section>
@@ -610,7 +613,7 @@ export function RamadaSite() {
               <Heading>Tell us what you&apos;re considering. We&apos;ll tell you straight.</Heading>
               <div className="contact-lines"><a href="tel:+8801711481155"><span>+880 1711 48 11 55</span><ArrowDownRight /></a><a href="mailto:info@ramadabuildersltd.com"><span>info@ramadabuildersltd.com</span><ArrowDownRight /></a></div>
             </div>
-            <div className="cta-image" data-view="true"><Image src="/media/property-11.avif" alt="Ramada residential interior" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
+            <div className="cta-image" data-view="true"><Image src={assetPath("/media/property-11.avif")} alt="Ramada residential interior" fill sizes="(max-width: 800px) 100vw, 50vw" /></div>
           </div>
           <footer className="container footer">
             <div className="socials"><span>Follow us.</span>{[["𝕏", "X"], ["◎", "Instagram"], ["in", "LinkedIn"], ["▶", "YouTube"]].map(function (social) { return <a href="#home" aria-label={social[1]} key={social[1]}><b>{social[0]}</b></a>; })}</div>
