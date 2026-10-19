@@ -137,6 +137,8 @@ function Neighbourhood() {
 
 export function RamadaSite() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [feature, setFeature] = useState(0);
   const [plan, setPlan] = useState(0);
@@ -153,6 +155,26 @@ export function RamadaSite() {
       ["Focus", plans[plan][2]],
     ];
   }, [plan]);
+
+  useEffect(function () {
+    if (!menuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const menuButton = menuButtonRef.current;
+
+    document.body.style.overflow = "hidden";
+    menuRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+
+    function closeOnEscape(event: globalThis.KeyboardEvent) {
+      if (event.key === "Escape") setMenuOpen(false);
+    }
+
+    document.addEventListener("keydown", closeOnEscape);
+    return function () {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+      menuButton?.focus();
+    };
+  }, [menuOpen]);
 
   useEffect(function () {
     if (paused) return;
@@ -388,7 +410,21 @@ export function RamadaSite() {
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const inquiry = String(data.get("inquiry") || "General");
+    const subject = `Website inquiry: ${inquiry}`;
+    const body = [
+      `Inquiry type: ${inquiry}`,
+      `Name: ${String(data.get("name") || "")}`,
+      `Phone: ${String(data.get("phone") || "")}`,
+      `Email: ${String(data.get("email") || "Not provided")}`,
+      `Budget or plot size: ${String(data.get("budget") || "Not provided")}`,
+      "",
+      String(data.get("message") || ""),
+    ].join("\n");
+
     setSent(true);
+    window.location.href = `mailto:info@ramadabuildersltd.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   const nav = [["Home", "home"], ["About", "about"], ["Services", "property"], ["Project", "overview"], ["Contact", "contact"]];
@@ -406,11 +442,11 @@ export function RamadaSite() {
         </nav>
         <div className="header-actions">
           <Button href="#contact">Let&apos;s connect</Button>
-          <button className="menu-button" type="button" onClick={function () { setMenuOpen(true); }} aria-label="Open menu"><Menu size={22} /></button>
+          <button ref={menuButtonRef} className="menu-button" type="button" onClick={function () { setMenuOpen(true); }} aria-label="Open menu"><Menu size={22} /></button>
         </div>
       </header>
 
-      <div className={"mobile-menu " + (menuOpen ? "is-open" : "")} aria-hidden={!menuOpen}>
+      <div ref={menuRef} className={"mobile-menu " + (menuOpen ? "is-open" : "")} role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden={!menuOpen} inert={!menuOpen}>
         <button type="button" onClick={function () { setMenuOpen(false); }} aria-label="Close menu"><X /></button>
         <nav aria-label="Mobile navigation">
           {nav.map(function (item, index) {
@@ -561,12 +597,13 @@ export function RamadaSite() {
             </div>
             <form className="contact-form fade-up" onSubmit={submit}>
               <label className="select-label"><select name="inquiry" required defaultValue=""><option value="" disabled>Select one</option><option>Buyer / Investor</option><option>Landowner</option></select><span>I am a...</span></label>
-              <label><input name="name" required placeholder=" " /><span>Full name</span></label>
-              <label><input name="phone" required type="tel" placeholder=" " /><span>Phone (WhatsApp preferred)</span></label>
-              <label><input name="email" type="email" placeholder=" " /><span>Email</span></label>
-              <label><input name="budget" placeholder=" " /><span>Budget or plot size (optional)</span></label>
-              <label className="form-message"><textarea name="message" required placeholder=" " rows={5} /><span>What are you considering?</span></label>
-              <button className="form-submit" type="submit"><span>{sent ? "Thank you — we’ll be in touch" : "Send my inquiry"}</span><ArrowRight size={18} /></button>
+              <label><input name="name" required maxLength={100} autoComplete="name" placeholder=" " /><span>Full name</span></label>
+              <label><input name="phone" required type="tel" maxLength={30} autoComplete="tel" inputMode="tel" placeholder=" " /><span>Phone (WhatsApp preferred)</span></label>
+              <label><input name="email" type="email" maxLength={254} autoComplete="email" placeholder=" " /><span>Email</span></label>
+              <label><input name="budget" maxLength={120} placeholder=" " /><span>Budget or plot size (optional)</span></label>
+              <label className="form-message"><textarea name="message" required maxLength={2000} placeholder=" " rows={5} /><span>What are you considering?</span></label>
+              <p className="form-note">This opens an email draft. Your details are not stored on this website.</p>
+              <button className="form-submit" type="submit"><span>{sent ? "Email draft opened" : "Open email draft"}</span><ArrowRight size={18} /></button>
             </form>
           </div>
         </section>

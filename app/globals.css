@@ -1183,8 +1183,16 @@ video {
 }
 
 .form-message,
+.form-note,
 .form-submit {
   grid-column: 1 / -1;
+}
+
+.form-note {
+  margin: 2px 4px 4px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .form-submit {
@@ -1849,6 +1857,7 @@ video {
   }
 
   .form-message,
+  .form-note,
   .form-submit {
     grid-column: auto;
   }

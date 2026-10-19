@@ -17,3 +17,11 @@
 - Keep the private Sites deployment and add a separate static-export GitHub Pages workflow for client review at `ramada.tufayelhossain.com`.
 - Let desktop content expand to a 1600px frame on ultrawide screens; keep the rotating feature panel centered at 1120px and let marquee tracks overflow both viewport edges evenly.
 
+## 2026-10-20
+
+- Use Cloudflare Workers Static Assets as the production host for `ramada.tufayelhossain.com`; keep GitHub as the source repository and deployment trigger.
+- Treat the application as a public static marketing site: it has no accounts, private records, database, payment flow, file upload, webhook, AI endpoint, or server API.
+- Keep inquiries client-side and open a prefilled email draft to `info@ramadabuildersltd.com`; state clearly that the website does not store the visitor's details.
+- Apply production security headers through `public/_headers`, which Cloudflare copies into the static output and serves with the site.
+- Require a clean production dependency audit. Track the remaining build-tool advisories separately because npm offers only breaking downgrades and those packages are not shipped to browsers or executed in production.
+

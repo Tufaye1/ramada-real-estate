@@ -16,8 +16,14 @@
 - [x] Add a GitHub Pages build and deployment workflow.
 - [x] Configure the Cloudflare CNAME for the client-review subdomain.
 - [x] Rebalance ultrawide desktop containers, the feature panel, and marquee tracks.
+- [x] Move the production deployment to Cloudflare Workers Static Assets.
+- [x] Add production browser security headers and a restrictive content security policy.
+- [x] Patch production dependencies and upgrade the Cloudflare/Vinext development toolchain.
+- [x] Make the contact form disclose its email-draft behavior and avoid false submission claims.
+- [x] Verify desktop, mobile, keyboard, semantic, and responsive behavior in a browser.
+- [x] Complete the final launch-readiness audit and document non-applicable backend controls.
 
 ## Current focus
 
-Ramada rebrand and copy replacement are browser-verified. GitHub Pages and Cloudflare DNS are configured for client review at https://ramada.tufayelhossain.com, with future pushes to `main` deployed automatically.
+The site is launch-ready pending the final production redeploy check. Cloudflare serves https://ramada.tufayelhossain.com, and pushes to `main` trigger the connected production build.
 
